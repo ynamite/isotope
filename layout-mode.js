@@ -4,17 +4,18 @@
 
 function LayoutMode( isotope ) {
   this.isotope = isotope;
+  // namespaced options just for layout mode
+  this.options = isotope.options[ this.name ] || {};
 }
 
-// add to Isotope
+// publicize LayoutMode
 $.Isotope.LayoutMode = LayoutMode;
 
 // get this.cols and this.columnWidth
 LayoutMode.prototype.getCols = function() {
-  var options = this.isotope.options[ this.name ];
   var containerWidth = this.isotope.element.width();
   // i.e. options.masonry && options.masonry.columnWidth
-  this.columnWidth = options && options.columnWidth ||
+  this.columnWidth = this.options.columnWidth ||
     // or use the size of the first item, i.e. outerWidth
     this.$filteredAtoms.outerWidth(true) ||
     // if there's no items, use size of container
@@ -31,7 +32,7 @@ LayoutMode.prototype.getRows = function() {
   var options = this.isotope.options[ this.name ];
   var containerHeight = this.isotope.element.height();
   // i.e. options.masonry && options.masonry.columnWidth
-  this.rowHeight = options && options.rowHeight ||
+  this.rowHeight = this.options.rowHeight ||
     // or use the size of the first item, i.e. outerWidth
     this.isotope.$filteredAtoms.outerHeight(true) ||
     // if there's no items, use size of container
@@ -59,5 +60,23 @@ LayoutMode.prototype.rowsChanged = function() {
   return ( this.rows !== previousRows );
 };
 
+// -------------------------- Isotope.createLayoutMode -------------------------- //
+
+// layout mode constructor creator
+$.Isotope.createLayoutMode = function( name ) {
+  // create constructor
+  var Mode = function( isotope ) {
+    // apply name, for getting options
+    this.name = name;
+    this.isotope = isotope;
+  };
+
+  // inherit LayoutMode methods
+  Mode.prototype = new LayoutMode();
+
+  $.Isotope.layoutModes[ name ] = Mode;
+
+  return Mode;
+};
 
 })( window, jQuery );

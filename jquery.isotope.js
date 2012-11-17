@@ -732,7 +732,6 @@
 
     reLayout : function( callback ) {
       var layoutMode = this.layoutModes[ this.options.layoutMode ];
-      console.log( this.layoutModes );
       layoutMode.reset();
       this.layout( this.$filteredAtoms, callback );
     },

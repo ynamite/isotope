@@ -2,16 +2,7 @@
 
 'use strict';
 
-function MasonryLayoutMode( isotope ) {
-  this.name = 'masonry';
-  this.isotope = isotope;
-}
-
-// add to Isotope
-$.Isotope.layoutModes.masonry = MasonryLayoutMode;
-
-// inherit LayoutMode prototype
-MasonryLayoutMode.prototype = new $.Isotope.LayoutMode();
+var MasonryLayoutMode = $.Isotope.createLayoutMode('masonry');
 
 MasonryLayoutMode.prototype.reset = function() {
   this.getCols();
