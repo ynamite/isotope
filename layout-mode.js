@@ -2,11 +2,7 @@
 
 'use strict';
 
-function LayoutMode( isotope ) {
-  this.isotope = isotope;
-  // namespaced options just for layout mode
-  this.options = isotope.options[ this.name ] || {};
-}
+function LayoutMode() {}
 
 // publicize LayoutMode
 $.Isotope.LayoutMode = LayoutMode;
@@ -69,6 +65,7 @@ $.Isotope.createLayoutMode = function( name ) {
     // apply name, for getting options
     this.name = name;
     this.isotope = isotope;
+    this.options = isotope.options[ this.name ] || {};
   };
 
   // inherit LayoutMode methods
