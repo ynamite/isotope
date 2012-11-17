@@ -879,68 +879,6 @@
 
     // ====================== LAYOUTS ======================
 
-
-    // ====================== cellsByRow ======================
-
-    _cellsByRowReset : function() {
-      this.cellsByRow = {
-        index : 0
-      };
-      // get this.cellsByRow.columnWidth
-      this._getSegments();
-      // get this.cellsByRow.rowHeight
-      this._getSegments(true);
-    },
-
-    _cellsByRowLayout : function( $elems ) {
-      var instance = this,
-          props = this.cellsByRow;
-      $elems.each( function(){
-        var $this = $(this),
-            col = props.index % props.cols,
-            row = Math.floor( props.index / props.cols ),
-            x = ( col + 0.5 ) * props.columnWidth - $this.outerWidth(true) / 2,
-            y = ( row + 0.5 ) * props.rowHeight - $this.outerHeight(true) / 2;
-        instance._pushPosition( $this, x, y );
-        props.index ++;
-      });
-    },
-
-    _cellsByRowGetContainerSize : function() {
-      return { height : Math.ceil( this.$filteredAtoms.length / this.cellsByRow.cols ) * this.cellsByRow.rowHeight + this.offset.top };
-    },
-
-    _cellsByRowResizeChanged : function() {
-      return this._checkIfSegmentsChanged();
-    },
-
-
-    // ====================== straightDown ======================
-
-    _straightDownReset : function() {
-      this.straightDown = {
-        y : 0
-      };
-    },
-
-    _straightDownLayout : function( $elems ) {
-      var instance = this;
-      $elems.each( function( i ){
-        var $this = $(this);
-        instance._pushPosition( $this, 0, instance.straightDown.y );
-        instance.straightDown.y += $this.outerHeight(true);
-      });
-    },
-
-    _straightDownGetContainerSize : function() {
-      return { height : this.straightDown.y };
-    },
-
-    _straightDownResizeChanged : function() {
-      return true;
-    },
-
-
     // ====================== masonryHorizontal ======================
 
     _masonryHorizontalReset : function() {
