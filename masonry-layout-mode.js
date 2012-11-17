@@ -1,3 +1,7 @@
+/**
+ * Masonry layout mode for Isotope
+ */
+
 ( function( window, $, undefined ) {
 
 'use strict';

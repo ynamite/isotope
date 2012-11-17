@@ -880,54 +880,6 @@
     // ====================== LAYOUTS ======================
 
 
-
-    // ====================== Masonry ======================
-
-
-    // ====================== fitRows ======================
-
-    _fitRowsReset : function() {
-      this.fitRows = {
-        x : 0,
-        y : 0,
-        height : 0
-      };
-    },
-
-    _fitRowsLayout : function( $elems ) {
-      var instance = this,
-          containerWidth = this.element.width(),
-          props = this.fitRows;
-
-      $elems.each( function() {
-        var $this = $(this),
-            atomW = $this.outerWidth(true),
-            atomH = $this.outerHeight(true);
-
-        if ( props.x !== 0 && atomW + props.x > containerWidth ) {
-          // if this element cannot fit in the current row
-          props.x = 0;
-          props.y = props.height;
-        }
-
-        // position the atom
-        instance._pushPosition( $this, props.x, props.y );
-
-        props.height = Math.max( props.y + atomH, props.height );
-        props.x += atomW;
-
-      });
-    },
-
-    _fitRowsGetContainerSize : function () {
-      return { height : this.fitRows.height };
-    },
-
-    _fitRowsResizeChanged : function() {
-      return true;
-    },
-
-
     // ====================== cellsByRow ======================
 
     _cellsByRowReset : function() {

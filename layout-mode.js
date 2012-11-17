@@ -55,6 +55,12 @@ LayoutMode.prototype.rowsChanged = function() {
   return ( this.rows !== previousRows );
 };
 
+// ----- required Isotope layout mode methods ----- //
+
+LayoutMode.prototype.resizeChanged = function() {
+  return true;
+};
+
 // -------------------------- Isotope.createLayoutMode -------------------------- //
 
 // layout mode constructor creator

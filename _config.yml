@@ -1,7 +1,7 @@
 name: Isotope
 permalink: /:categories/:title.html
 pygments: true
-isotope_js: jquery.isotope.min.js
+isotope_js: jquery.isotope.js
 jquery_js: js/jquery-1.7.1.min.js
 exclude: [ minify.sh ]
 
