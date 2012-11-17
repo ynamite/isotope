@@ -6,6 +6,9 @@ function LayoutMode( isotope ) {
   this.isotope = isotope;
 }
 
+// add to Isotope
+$.Isotope.LayoutMode = LayoutMode;
+
 // get this.cols and this.columnWidth
 LayoutMode.prototype.getCols = function() {
   var options = this.isotope.options[ this.name ];
@@ -13,7 +16,7 @@ LayoutMode.prototype.getCols = function() {
   // i.e. options.masonry && options.masonry.columnWidth
   this.columnWidth = options && options.columnWidth ||
     // or use the size of the first item, i.e. outerWidth
-    this.$filteredAtoms[ 'outer' + capitalize(size) ](true) ||
+    this.$filteredAtoms.outerWidth(true) ||
     // if there's no items, use size of container
     containerWidth;
 
@@ -30,7 +33,7 @@ LayoutMode.prototype.getRows = function() {
   // i.e. options.masonry && options.masonry.columnWidth
   this.rowHeight = options && options.rowHeight ||
     // or use the size of the first item, i.e. outerWidth
-    this.isotope.$filteredAtoms['outerHeight'](true) ||
+    this.isotope.$filteredAtoms.outerHeight(true) ||
     // if there's no items, use size of container
     containerHeight;
 
@@ -43,7 +46,7 @@ LayoutMode.prototype.getRows = function() {
 LayoutMode.prototype.colsChanged = function() {
   var previousCols = this.cols;
   // update rows
-  this.getCols( isRows );
+  this.getCols();
   // return if updated cols is not equal to previous
   return ( this.cols !== previousCols );
 };

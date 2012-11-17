@@ -7,6 +7,9 @@ function MasonryLayoutMode( isotope ) {
   this.isotope = isotope;
 }
 
+// add to Isotope
+$.Isotope.layoutModes.masonry = MasonryLayoutMode;
+
 // inherit LayoutMode prototype
 MasonryLayoutMode.prototype = new $.Isotope.LayoutMode();
 

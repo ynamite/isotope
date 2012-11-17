@@ -347,6 +347,8 @@
     itemPositionDataEnabled: false
   };
 
+  $.Isotope.layoutModes = {};
+
   $.Isotope.prototype = {
 
     // sets up widget
@@ -414,6 +416,13 @@
       this.element.delegate( '.' + this.options.hiddenClass, 'click', function(){
         return false;
       });
+
+      // create instances for layout modes
+      this.layoutModes = {};
+
+      for ( var mode in $.Isotope.layoutModes ) {
+        this.layoutModes[ mode ] = new $.Isotope.layoutModes[ mode ]( this );
+      }
 
     },
 
@@ -605,14 +614,14 @@
     // accepts atoms-to-be-laid-out to start with
     layout : function( $elems, callback ) {
 
-      var layoutMode = this.options.layoutMode;
+      var layoutMode = this.layoutModes[ this.options.layoutMode ];
 
       // layout logic
-      this[ '_' +  layoutMode + 'Layout' ]( $elems );
+      layoutMode.layout( $elems );
 
       // set the size of the container
       if ( this.options.resizesContainer ) {
-        var containerStyle = this[ '_' +  layoutMode + 'GetContainerSize' ]();
+        var containerStyle = layoutMode.getContainerSize();
         this.styleQueue.push({ $el: this.element, style: containerStyle });
       }
 
@@ -714,17 +723,18 @@
 
 
     resize : function() {
-      if ( this[ '_' + this.options.layoutMode + 'ResizeChanged' ]() ) {
+      var layoutMode = this.layoutModes[ this.options.layoutMode ];
+      if ( layoutMode.resizeChanged() ) {
         this.reLayout();
       }
     },
 
 
     reLayout : function( callback ) {
-
-      this[ '_' +  this.options.layoutMode + 'Reset' ]();
+      var layoutMode = this.layoutModes[ this.options.layoutMode ];
+      console.log( this.layoutModes );
+      layoutMode.reset();
       this.layout( this.$filteredAtoms, callback );
-
     },
 
     // ====================== Convenience methods ======================
