@@ -25,7 +25,6 @@ LayoutMode.prototype.getCols = function() {
 
 // get this.rows and this.rowHeight
 LayoutMode.prototype.getRows = function() {
-  var options = this.isotope.options[ this.name ];
   var containerHeight = this.isotope.element.height();
   // i.e. options.masonry && options.masonry.columnWidth
   this.rowHeight = this.options.rowHeight ||
@@ -61,7 +60,7 @@ LayoutMode.prototype.rowsChanged = function() {
 // layout mode constructor creator
 $.Isotope.createLayoutMode = function( name ) {
   // create constructor
-  var Mode = function( isotope ) {
+  var IsotopeLayoutMode = function( isotope ) {
     // apply name, for getting options
     this.name = name;
     this.isotope = isotope;
@@ -69,11 +68,11 @@ $.Isotope.createLayoutMode = function( name ) {
   };
 
   // inherit LayoutMode methods
-  Mode.prototype = new LayoutMode();
+  IsotopeLayoutMode.prototype = new LayoutMode();
 
-  $.Isotope.layoutModes[ name ] = Mode;
+  $.Isotope.layoutModes[ name ] = IsotopeLayoutMode;
 
-  return Mode;
+  return IsotopeLayoutMode;
 };
 
 })( window, jQuery );
