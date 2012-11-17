@@ -9,9 +9,6 @@
  * Copyright 2012 David DeSandro / Metafizzy
  */
 
-/*jshint asi: true, browser: true, curly: true, eqeqeq: true, forin: false, immed: false, newcap: true, noempty: true, strict: true, undef: true */
-/*global jQuery: false */
-
 (function( window, $, undefined ){
 
   'use strict';
