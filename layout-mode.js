@@ -13,7 +13,7 @@ LayoutMode.prototype.getCols = function() {
   // i.e. options.masonry && options.masonry.columnWidth
   this.columnWidth = this.options.columnWidth ||
     // or use the size of the first item, i.e. outerWidth
-    this.$filteredAtoms.outerWidth(true) ||
+    this.isotope.$filteredAtoms.outerWidth(true) ||
     // if there's no items, use size of container
     containerWidth;
 
