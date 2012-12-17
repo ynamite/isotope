@@ -1,0 +1,76 @@
+# Isotope v2
+
+## To do
+
+break out custom layout mode JS into their own .js files
+  centered Masonry
+  category rows
+  masonry corner stamp
+  masonry gutters
+  masonry column shift
+  big graph
+  spine align
+
+configurator
+
+tests
+
+
+
+## What will break from v1
+
+layout mode configuration
+
+## Components
+
+jQuery Bridget
+imagesLoaded
+smartresize
+
+## Configuration
+
+
+**Core**
+
+jquery.bridget.js
+jquery.isotope.js
+layout-mode.js
+
+**Recommended**
+
+mini-modernizr
+smartresize (debounced resize)
+imagesLoaded
+
+**Layout modes**
+
+cellsByColumn
+cellsByRow
+fitColumns
+fitRows
+masonry
+masonryHorizontal
+straightAcross
+straightDown
+big graph
+spine align
+category rows
+
+centered Masonry
+masonry corner stamp
+masonry gutters
+masonry column shift
+
+
+## Site scripts
+
+jQuery
+jQuery BBQ
+fake element
+infinite scroll
+make big graph projects
+
+all the site scripts
+
+buttons
+
