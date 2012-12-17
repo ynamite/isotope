@@ -61,6 +61,10 @@ masonry corner stamp
 masonry gutters
 masonry column shift
 
+**default**
+
+Core, recommended, masonry & fit rows
+
 
 ## Site scripts
 
